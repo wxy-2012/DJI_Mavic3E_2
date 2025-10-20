@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import dji.sampleV5.aircraft.models.LookAtVM;
 import dji.sdk.keyvalue.value.common.DoubleRect;
 import dji.v5.manager.datacenter.camera.view.PinPoint;
 import dji.v5.manager.intelligent.AutoSensingTarget;
@@ -26,7 +25,6 @@ public class OverLayerTopView extends AppCompatImageView {
     private TextPaint wordPaint;
     private int screenWidth, screenHeight;
     private final StringBuilder buffer = new StringBuilder();
-    private List<LookAtVM.Point> points = new ArrayList<>();
 
     private DoubleRect selectBound;
     private List<AutoSensingTarget> currentTargetInfo;
@@ -78,16 +76,6 @@ public class OverLayerTopView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (points != null) {
-            for (LookAtVM.Point point : points) {
-                if (point.getPinPointInfo().isValid()) {
-                    for (PinPoint pinPoint : point.getPinPointInfo().getPinPoints()) {
-                        drawPoint(canvas, (float) pinPoint.getX(), (float) pinPoint.getY());
-                        drawTipText(canvas, initPointInfo(point), (float) pinPoint.getX() * screenWidth, (float) pinPoint.getY() * screenHeight);
-                    }
-                }
-            }
-        }
         if (selectBound != null) {
             drawBound(canvas, selectBound);
         }
@@ -103,16 +91,6 @@ public class OverLayerTopView extends AppCompatImageView {
             super.onDraw(canvas);
         }
         super.onDraw(canvas);
-    }
-
-    private String initPointInfo(LookAtVM.Point point) {
-        buffer.setLength(0);
-        buffer.append("Lng:").append(point.getPos().getLongitude()).append(" ");
-        buffer.append("Lat:").append(point.getPos().getLatitude()).append(" ");
-        buffer.append("Alt:").append(point.getPos().getAltitude()).append("\n");
-        buffer.append("Direction:").append(point.getPinPointInfo().getPointDirection()).append("\n");
-        buffer.append("ComponentIndexType:").append(point.getComponentIndexType());
-        return buffer.toString();
     }
 
     private void drawPoint(Canvas canvas, float x, float y) {
@@ -141,13 +119,6 @@ public class OverLayerTopView extends AppCompatImageView {
         buffer.append("Id:").append(info.getTargetIndex()).append("\n");
         buffer.append(info.getLabel());
         return buffer.toString();
-    }
-
-    public void onPointsChanged(List<LookAtVM.Point> pinPoints) {
-        if (points != null) {
-            this.points = pinPoints;
-        }
-        invalidate();
     }
 
     public void onTargetChange(List<AutoSensingTarget> targetInfo) {

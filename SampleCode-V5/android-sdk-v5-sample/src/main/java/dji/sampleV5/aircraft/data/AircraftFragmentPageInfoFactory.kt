@@ -18,7 +18,6 @@ AircraftFragmentPageInfoFactory : IFragmentPageInfoFactory {
         return FragmentPageItemList(R.navigation.nav_aircraft).apply {
             items.add(FragmentPageItem(R.id.virtual_stick_page, R.string.item_virtual_stick_title, R.string.item_virtual_description))
             items.add(FragmentPageItem(R.id.flight_record_page, R.string.item_flight_record_title, R.string.item_flight_record_description))
-            items.add(FragmentPageItem(R.id.flight_upgrade_page, R.string.item_upgrade_title, R.string.item_upgrade_description))
             items.add(FragmentPageItem(R.id.flight_simulator_page, R.string.item_simulator_title, R.string.item_simulator_description))
             items.add(FragmentPageItem(R.id.waypoint_v3_page, R.string.item_waypoint_title, R.string.item_waypoint_description))
             items.add(FragmentPageItem(R.id.waypoint_v3_page, R.string.item_waypoint_title, R.string.item_waypoint_description))
@@ -26,7 +25,6 @@ AircraftFragmentPageInfoFactory : IFragmentPageInfoFactory {
             items.add(FragmentPageItem(R.id.uas_page, R.string.item_uas_title, R.string.item_uas_description))
             items.add(FragmentPageItem(R.id.fly_safe_page, R.string.item_fly_safe_title, R.string.item_fly_safe_description))
             items.add(FragmentPageItem(R.id.security_code_page, R.string.item_security_code_title, R.string.item_security_code_description))
-            items.add(FragmentPageItem(R.id.look_at_page, R.string.item_look_at_title, R.string.item_look_at_description))
         }
     }
 }

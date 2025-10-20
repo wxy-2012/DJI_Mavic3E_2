@@ -84,10 +84,4 @@
             app:destination="@id/media_details_page" />
     </fragment>
 
-    <fragment
-        android:id="@+id/key_app_silently_upgrade_page"
-        android:name="dji.sampleV5.aircraft.pages.APPSilentlyUpgradeFragment"
-        android:label="log_info_page"
-        tools:layout="@layout/frag_app_silently_upgrade_page"/>
-
 </navigation>
